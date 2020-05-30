@@ -28,6 +28,7 @@ VOLUME ["$WORKDIR/media/", "$WORKDIR/logs/", "$WORKDIR/static/"]
 COPY [".", "$WORKDIR"]
 
 # Now collect static files and move them into "/django/static"
+ENV STATIC_ROOT .
 RUN python3 manage.py collectstatic --noinput
 
 # Copy runtime script (with setup config)
