@@ -1,0 +1,6 @@
+django
+channel
+gunicorn
+black
+isort
+bandit
