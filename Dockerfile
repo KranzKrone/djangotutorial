@@ -5,8 +5,8 @@ ENV PYTHONUNBUFFERED=1
 ENV DOCKER=1
 RUN apt update
 RUN apt -y upgrade
-RUN apt install -y python-pillow
-RUN apt install -y python3-psycopg2
+RUN apt install -y python-pillow 
+RUN apt install -y python3-psycopg2 gcc
 RUN apt autoremove
 
 # Application directory
