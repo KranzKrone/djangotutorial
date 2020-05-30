@@ -1,6 +1,4 @@
 name: Docker Image CI
-env:
-  STATIC_ROOT: static
 
 on:
   push:
