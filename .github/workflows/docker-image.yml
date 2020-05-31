@@ -18,7 +18,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: |
-        echo $IMAGE_NAME:IMAGE_BRANCH
-        
-        docker build . --file Dockerfile --tag $IMAGE_NAME:latest
+       run: |
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          # Log image name and branch
+          echo $IMAGE_NAME:IMAGE_BRANCH
+          
+          # Build the image
+          docker build . --file Dockerfile --tag $IMAGE_NAME:IMAGE_BRANCH
