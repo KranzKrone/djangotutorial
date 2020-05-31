@@ -31,7 +31,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Log image name and branch
-          echo $IMAGE_NAME:IMAGE_BRANCH
+          echo $IMAGE_ID:IMAGE_BRANCH
           
           # Build the image
-          docker build . --file Dockerfile --tag $IMAGE_NAME:IMAGE_BRANCH
+          docker build . --file Dockerfile --tag $IMAGE_ID:IMAGE_BRANCH
