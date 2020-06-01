@@ -32,7 +32,7 @@ ENV STATIC_ROOT .
 RUN python3 manage.py collectstatic --noinput
 
 # Copy runtime script (with setup config)
-COPY ["docker-entrypoint.sh", "/usr/local/bin/"]
+COPY ["docker-entrypoint.sh", "/usr/local/bin"]
 
 # Run applciation setup and service at exposed "default port"
 EXPOSE 8000
@@ -42,8 +42,10 @@ RUN adduser --quiet -system django
 RUN chown -R django /app
 USER django
 
+RUN echo $PATH
+
 # Use "Entrypoint" if user does not hand over a different CMD
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Allow user to overwrite the default command
-CMD ["gunicorn --bind 0.0.0.0:8000 main.wsgi"]
+CMD ["echo gunicorn starts; gunicorn --bind 0.0.0.0:8000 mysite.wsgi"]
