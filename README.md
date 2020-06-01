@@ -1,7 +1,17 @@
-# djangotutorial
-My learning Django repro
+# Django Tutorials
+
+My Django learner repro
+
 
 ## Docker
+
+Docker enables isolation of duties, and capsulates processes from each other. Finally, it does not make it necesarry to install localy anymore, you just run docker images; like 
+
+    $ docker run --name some-redis -d redis
+
+If you have your own Dockerfile, with your required content for the image to run follow these simple steps, build, run, stop/kill. 
+
+Be aware that docker images are one-time storage images, and once gone the content is gone. If you need to keep things use a seperate storage/file system/database for this.
 
 ### Build
 
