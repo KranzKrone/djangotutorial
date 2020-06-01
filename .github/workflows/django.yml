@@ -1,4 +1,4 @@
-name: Django CI github
+name: Django CI Pipeline 
 
 on:
   push:
